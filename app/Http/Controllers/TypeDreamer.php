@@ -18,7 +18,9 @@ class TypeDreamer extends Controller
             'name' => $request->name,
             'category_id' => $request->category_id,
             'user_id' => $request->user_id,
-            'order' => $request->order
+            'order' => $request->order,
+            'avatar' => $request->avatar,
+            'birthDate' => $request->birthDate,
         ]);
 
         return response()->json([
@@ -36,7 +38,7 @@ class TypeDreamer extends Controller
     public function update(Request $request, Type $task)
     {
         $status = $task->update(
-            $request->only(['name', 'category_id', 'user_id', 'order'])
+            $request->only(['name', 'category_id', 'user_id', 'order', 'avatar', 'birthDate'])
         );
 
         return response()->json([

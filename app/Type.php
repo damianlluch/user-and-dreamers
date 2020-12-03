@@ -9,11 +9,12 @@ class Type extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'category_id', 'user_id', 'order'];
+    protected $fillable = ['name', 'category_id', 'user_id', 'order', 'avatar', 'birthDate'];
+    protected $primaryKey = 'id';
 
     public function category()
     {
-        return $this->hasOne(Dreamer::class);
+        return $this->hasOne(Dreamer::class, 'id');
     }
 
     public function user()

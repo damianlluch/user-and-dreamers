@@ -13,6 +13,6 @@ class Dreamer extends Model
 
     public function tasks()
     {
-        return $this->hasMany(Type::class);
+        return $this->hasMany(Type::class, 'id');
     }
 }
