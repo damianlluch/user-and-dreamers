@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Task;
+use App\Type;
 use Illuminate\Http\Request;
 
-class TaskController extends Controller
+class TypeDreamer extends Controller
 {
     public function index()
     {
-        return response()->json(Task::all()->toArray());
+        return response()->json(Type::all()->toArray());
     }
 
     public function store(Request $request)
     {
-        $task = Task::create([
+        $task = Type::create([
             'name' => $request->name,
             'category_id' => $request->category_id,
             'user_id' => $request->user_id,
@@ -24,16 +24,16 @@ class TaskController extends Controller
         return response()->json([
             'status' => (bool)$task,
             'data' => $task,
-            'message' => $task ? 'Task Created!' : 'Error Creating Task'
+            'message' => $task ? 'Type Created!' : 'Error Creating Type'
         ]);
     }
 
-    public function show(Task $task)
+    public function show(Type $task)
     {
         return response()->json($task);
     }
 
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Type $task)
     {
         $status = $task->update(
             $request->only(['name', 'category_id', 'user_id', 'order'])
@@ -41,17 +41,17 @@ class TaskController extends Controller
 
         return response()->json([
             'status' => $status,
-            'message' => $status ? 'Task Updated!' : 'Error Updating Task'
+            'message' => $status ? 'Type Updated!' : 'Error Updating Type'
         ]);
     }
 
-    public function destroy(Task $task)
+    public function destroy(Type $task)
     {
         $status = $task->delete();
 
         return response()->json([
             'status' => $status,
-            'message' => $status ? 'Task Deleted!' : 'Error Deleting Task'
+            'message' => $status ? 'Type Deleted!' : 'Error Deleting Type'
         ]);
     }
 }
