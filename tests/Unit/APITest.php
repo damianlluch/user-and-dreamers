@@ -58,7 +58,7 @@ class APITest extends TestCase
 
         $response->assertStatus(200)->assertJson([
             'status' => true,
-            'message' => 'Category Created'
+            'message' => 'Dreamer Created'
         ]);
     }
 
@@ -66,13 +66,13 @@ class APITest extends TestCase
     {
         $user = \App\User::find(1);
 
-        $category = \App\Category::create(['name' => 'To be deleted']);
+        $category = \App\Dreamer::create(['name' => 'To be deleted']);
 
         $response = $this->actingAs($user, 'api')
             ->json('DELETE', "/api/category/{$category->id}")
             ->assertStatus(200)->assertJson([
                 'status' => true,
-                'message' => 'Category Deleted'
+                'message' => 'Dreamer Deleted'
             ]);
     }
 }

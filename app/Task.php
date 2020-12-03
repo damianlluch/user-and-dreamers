@@ -13,7 +13,7 @@ class Task extends Model
 
     public function category()
     {
-        return $this->hasOne(Category::class);
+        return $this->hasOne(Dreamer::class);
     }
 
     public function user()
